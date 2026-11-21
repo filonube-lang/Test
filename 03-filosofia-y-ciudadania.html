@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sofistas, Sócrates y Aspasia: filosofía y ciudadanía · Autoevaluación</title>
+<style>
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#1e293b;background:#f3f4f6;line-height:1.6}*{box-sizing:border-box}body{margin:0;padding:32px 16px}main{max-width:820px;margin:auto;background:white;padding:clamp(22px,5vw,48px);border-radius:20px;box-shadow:0 8px 30px #1e293b0a}h1,h2{color:#3730a3;line-height:1.3}h1{font-size:clamp(25px,4vw,34px);margin:0 0 10px}h2{font-size:23px}p{margin:12px 0}.meta{color:#475569;font-size:15px}.progress{height:8px;background:#e0e7ff;border-radius:8px;margin:16px 0 28px;overflow:hidden}.progress span{display:block;background:#4f46e5;height:100%;transition:width .2s}.options{display:grid;gap:12px;margin:24px 0}button{font:inherit;cursor:pointer;border-radius:12px;padding:16px 20px;min-height:56px}button:focus-visible{outline:3px solid #4338ca;outline-offset:4px}.option{display:flex;gap:16px;text-align:left;align-items:center;background:#fff;border:1px solid #c7d2fe;color:#1e293b;width:100%}.option:hover{background:#eef2ff;border-color:#6366f1}.letter{background:#e0e7ff;color:#3730a3;font-weight:700;border-radius:7px;min-width:32px;text-align:center;padding:2px}.primary{background:#4338ca;color:#fff;border:0}.primary:hover{background:#3730a3}.hint{font-size:14px;color:#64748b}.score{padding:22px;background:#eef2ff;border-radius:12px;margin:22px 0;font-size:20px}.review{border:1px solid #e2e8f0;border-left:5px solid;padding:20px;border-radius:12px;margin:18px 0}.review.correct{border-left-color:#15803d}.review.incorrect{border-left-color:#b91c1c}.status{font-weight:700}.correct .status{color:#166534}.incorrect .status{color:#991b1b}.review h3{font-size:18px;line-height:1.5;margin:8px 0}.review p{font-size:15px}details{margin:20px 0;font-size:14px;color:#475569}summary{cursor:pointer}footer{margin-top:30px;font-size:13px;color:#64748b}@media(max-width:480px){body{padding:12px}main{border-radius:14px}.option{padding:14px;gap:12px}}
+</style>
+</head>
+<body><main><h1>3. Filosofía y ciudadanía en la Ilustración griega </h1><div id="app"></div></main>
+<script>
+'use strict';
+// La respuesta se identifica por su índice original, nunca por su posición barajada.
+const bank = [
+  {
+    "q": "¿En qué consiste el giro antropológico de la filosofía griega?",
+    "o": [
+      "En orientar la reflexión hacia la moral, la educación y la vida política.",
+      "En orientar la reflexión hacia el origen material y el cambio del cosmos.",
+      "En fundamentar las normas mediante las genealogías de dioses y héroes.",
+      "En fundamentar la ciudadanía mediante el nacimiento y el linaje noble."
+    ],
+    "a": 0,
+    "e": "El giro antropológico desplaza el interés desde la naturaleza hacia los asuntos humanos, el lenguaje y la vida en la polis."
+  },
+  {
+    "q": "¿Qué forma de participación caracterizaba la democracia directa ateniense?",
+    "o": [
+      "Elegir representantes encargados de deliberar en lugar de los ciudadanos.",
+      "Intervenir personalmente en la Asamblea y en las decisiones públicas.",
+      "Delegar las decisiones públicas en maestros profesionales de retórica.",
+      "Reservar la deliberación política a familias de ascendencia aristocrática."
+    ],
+    "a": 1,
+    "e": "Los ciudadanos participaban personalmente en la Asamblea, debatían leyes y ejercían funciones judiciales."
+  },
+  {
+    "q": "¿Qué conjunto de personas quedaba excluido de la ciudadanía política ateniense?",
+    "o": [
+      "Los varones libres nacidos de padres atenienses.",
+      "Los ciudadanos que ejercían funciones judiciales.",
+      "Las mujeres, los esclavos y los extranjeros.",
+      "Los ciudadanos que intervenían en la Asamblea."
+    ],
+    "a": 2,
+    "e": "El material distingue a los varones libres de padres atenienses de los grupos excluidos: mujeres, esclavos y extranjeros."
+  },
+  {
+    "q": "¿Por qué aumentó la demanda de formación en argumentación en Atenas?",
+    "o": [
+      "Porque el estudio natural exigía identificar un principio material común.",
+      "Porque la posición política se transmitía a través del linaje familiar.",
+      "Porque la tradición épica requería recitar los relatos de los héroes.",
+      "Porque la vida pública exigía defender ideas y convencer a otros."
+    ],
+    "a": 3,
+    "e": "La participación en asambleas y tribunales requería hablar, argumentar y defender públicamente las propias ideas."
+  },
+  {
+    "q": "¿Qué descripción corresponde a la actividad educativa de los sofistas?",
+    "o": [
+      "Maestros itinerantes que cobraban por enseñar habilidades cívicas.",
+      "Investigadores naturales que buscaban un fundamento material común.",
+      "Interlocutores públicos que rechazaban transmitir saber por dinero.",
+      "Poetas tradicionales que recitaban narraciones de héroes y dioses."
+    ],
+    "a": 0,
+    "e": "Los sofistas profesionalizaron una enseñanza remunerada de retórica, argumentación y otras habilidades para la vida pública."
+  },
+  {
+    "q": "¿Qué ruptura introdujo la concepción sofista de la areté?",
+    "o": [
+      "Asoció la excelencia al silencio y la discreción dentro del hogar.",
+      "Consideró que la excelencia podía adquirirse mediante la educación.",
+      "Vinculó la excelencia a la posición heredada de las familias nobles.",
+      "Identificó la excelencia con el conocimiento universal del bien."
+    ],
+    "a": 1,
+    "e": "Los sofistas defendían que la areté se aprendía, frente a su vinculación aristocrática con el nacimiento y el linaje."
+  },
+  {
+    "q": "¿Qué limitaba la democratización del saber promovida por los sofistas?",
+    "o": [
+      "La necesidad de pertenecer a un linaje aristocrático para aprender.",
+      "La obligación de dedicarse al estudio de la naturaleza para formarse.",
+      "La necesidad de disponer de recursos para pagar sus enseñanzas.",
+      "La obligación de abandonar el debate político al iniciar la formación."
+    ],
+    "a": 2,
+    "e": "Su enseñanza ampliaba el acceso al saber, pero estaba limitada a quienes podían pagarla."
+  },
+  {
+    "q": "Una ciudad modifica por acuerdo una norma que otra ciudad mantiene. ¿Qué distinción sofista ayuda a interpretar esa diferencia?",
+    "o": [
+      "La distinción entre conocimiento del bien y bien aparente.",
+      "La distinción entre ironía crítica y elaboración mayéutica.",
+      "La distinción entre excelencia heredada y formación retórica.",
+      "La distinción entre naturaleza necesaria y norma convencional."
+    ],
+    "a": 3,
+    "e": "La oposición phýsis-nómos distingue lo natural, independiente de acuerdos, de las leyes sociales modificables."
+  },
+  {
+    "q": "¿Cómo interpreta el material la expresión de Protágoras «el hombre es la medida de todas las cosas»?",
+    "o": [
+      "La verdad depende del punto de vista del sujeto que juzga.",
+      "La verdad procede del linaje de quien participa en el debate.",
+      "La verdad se obtiene mediante una definición universal del bien.",
+      "La verdad se fundamenta en el origen material de la naturaleza."
+    ],
+    "a": 0,
+    "e": "El material presenta esta expresión como una formulación del relativismo: la verdad depende del punto de vista humano."
+  },
+  {
+    "q": "¿Qué tensión cívica suscitaba el relativismo sofista?",
+    "o": [
+      "Favorecía la autoridad heredada, pero debilitaba el prestigio del linaje.",
+      "Favorecía la crítica de normas, pero inquietaba sobre su fundamento moral.",
+      "Favorecía la vida doméstica, pero dificultaba administrar los hogares.",
+      "Favorecía el estudio natural, pero excluía investigar el orden del cosmos."
+    ],
+    "a": 1,
+    "e": "El relativismo permitía cuestionar convenciones, pero provocaba recelos sobre la estabilidad moral y la justificación de las acciones."
+  },
+  {
+    "q": "Un orador busca influir en las emociones del público para lograr su apoyo. ¿Qué aspecto de la retórica destaca esa actuación?",
+    "o": [
+      "La identificación de la virtud con el conocimiento racional del bien.",
+      "La revisión de definiciones para descubrir contradicciones propias.",
+      "El poder persuasivo del lenguaje sobre las decisiones de los oyentes.",
+      "El descubrimiento de principios naturales independientes del acuerdo."
+    ],
+    "a": 2,
+    "e": "El material destaca, con Gorgias, la capacidad de la palabra para influir en emociones y decisiones."
+  },
+  {
+    "q": "¿Qué distingue el propósito del diálogo socrático de la búsqueda de éxito persuasivo?",
+    "o": [
+      "La conservación de las opiniones que cuentan con más seguidores.",
+      "La transmisión de técnicas eficaces para imponerse en los tribunales.",
+      "La aceptación de creencias que proceden de tradiciones compartidas.",
+      "El examen de la coherencia y el fundamento de las propias creencias."
+    ],
+    "a": 3,
+    "e": "Sócrates busca la verdad mediante la crítica racional de las creencias, en lugar de limitarse a convencer."
+  },
+  {
+    "q": "En un diálogo, Sócrates pide una definición y sus preguntas revelan que es insuficiente. ¿Qué momento del método se manifiesta?",
+    "o": [
+      "La ironía, que pone en evidencia la seguridad de un saber aparente.",
+      "La mayéutica, que desarrolla ideas tras reconocer la propia ignorancia.",
+      "La retórica, que busca persuadir mediante las emociones del público.",
+      "El relativismo, que vincula los juicios a las convenciones de la ciudad."
+    ],
+    "a": 0,
+    "e": "La ironía socrática parte de una ignorancia fingida y lleva al interlocutor a reconocer contradicciones o insuficiencias."
+  },
+  {
+    "q": "Tras reconocer su ignorancia, una persona elabora ideas mediante preguntas orientadoras. ¿Qué caracteriza esta fase socrática?",
+    "o": [
+      "Recibir una doctrina acabada de un maestro que posee la verdad.",
+      "Desarrollar las ideas mediante el diálogo y el ejercicio de la razón.",
+      "Elegir la opinión que obtiene mayor respaldo entre los ciudadanos.",
+      "Conservar la definición heredada por respeto a la tradición común."
+    ],
+    "a": 1,
+    "e": "La mayéutica ayuda al interlocutor a alumbrar ideas mediante preguntas; el conocimiento no se impone desde fuera."
+  },
+  {
+    "q": "¿Cómo explica el intelectualismo moral socrático una acción injusta?",
+    "o": [
+      "Como resultado de carecer de ascendencia social prestigiosa.",
+      "Como resultado de emplear una técnica de oratoria insuficiente.",
+      "Como resultado de ignorar el bien o confundirlo con uno aparente.",
+      "Como resultado de discrepar de una costumbre mayoritaria local."
+    ],
+    "a": 2,
+    "e": "Para Sócrates, la virtud es conocimiento y la injusticia procede de la ignorancia del bien o de su confusión con un bien aparente."
+  },
+  {
+    "q": "¿Qué peligro denuncia Sócrates en las decisiones democráticas?",
+    "o": [
+      "Que los ciudadanos examinen las razones de sus propias opiniones.",
+      "Que el diálogo ponga en cuestión creencias aceptadas por tradición.",
+      "Que la educación vincule la conducta con una búsqueda racional.",
+      "Que la mayoría decida sin conocimiento ni reflexión suficiente."
+    ],
+    "a": 3,
+    "e": "Su crítica se dirige a la mera suma de opiniones cuando no está guiada por el conocimiento y la reflexión."
+  },
+  {
+    "q": "¿Qué sentido atribuye el material a la decisión de Sócrates de aceptar la sentencia y no huir?",
+    "o": [
+      "Expresa su compromiso cívico mediante la obediencia a las leyes.",
+      "Expresa su aceptación de la mayoría como criterio de verdad moral.",
+      "Expresa su renuncia al examen crítico de las opiniones ciudadanas.",
+      "Expresa su preferencia por el éxito político frente al saber racional."
+    ],
+    "a": 0,
+    "e": "El material explica esa decisión por su compromiso con las leyes de la ciudad y la coherencia entre pensamiento y acción."
+  },
+  {
+    "q": "¿Qué significa que el giro antropológico fuera androcéntrico?",
+    "o": [
+      "Que la reflexión humana adoptaba las costumbres de otras ciudades.",
+      "Que la reflexión humana tomaba al varón como experiencia central.",
+      "Que la reflexión humana regresaba al estudio de causas naturales.",
+      "Que la reflexión humana prescindía del lenguaje y de la educación."
+    ],
+    "a": 1,
+    "e": "La virtud y la ciudadanía se abordaban principalmente desde la experiencia masculina, mientras las mujeres tenían un acceso muy limitado a la vida pública."
+  },
+  {
+    "q": "¿Qué diferencia describe el material entre las hetairas y las esposas atenienses?",
+    "o": [
+      "Las hetairas accedían a cargos públicos y las esposas dirigían tribunales.",
+      "Las hetairas heredaban el poder político y las esposas recibían linajes.",
+      "Las hetairas tenían mayor acceso a conversaciones y ambientes cultos.",
+      "Las hetairas representaban a la Asamblea y las esposas elegían cargos."
+    ],
+    "a": 2,
+    "e": "Algunas hetairas recibían formación intelectual y participaban en banquetes y círculos culturales, aunque sufrían estigma social."
+  },
+  {
+    "q": "¿Por qué resulta difícil reconstruir con precisión el pensamiento de Aspasia?",
+    "o": [
+      "Porque su actividad se centró en explicar el origen material del cosmos.",
+      "Porque su ciudadanía le exigía limitar su enseñanza a la Asamblea.",
+      "Porque sus ideas se transmitieron como leyes oficiales de la ciudad.",
+      "Porque no dejó obras escritas y su aportación se conoce indirectamente."
+    ],
+    "a": 3,
+    "e": "La ausencia de obras escritas dificulta reconstruir su pensamiento; las fuentes filosóficas y literarias permiten conocer su influencia de manera indirecta."
+  }
+];
+function shuffle(values){const result=values.slice();for(let i=result.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[result[i],result[j]]=[result[j],result[i]];}return result;}
+function makeAttempt(){return shuffle(bank.map((item,id)=>({...item,id,options:shuffle(item.o.map((text,key)=>({text,key})))})));}
+function grade(items,answers){return items.reduce((sum,item,i)=>sum+Number(answers[i]===item.a),0);}
+const app=document.getElementById('app');let attempt=[],answers=[],position=0,locked=false;
+function el(tag,text,className){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;}
+function focusHeading(heading){heading.tabIndex=-1;heading.focus();}
+function start(){attempt=makeAttempt();answers=[];position=0;locked=false;showQuestion();}
+function showQuestion(){app.replaceChildren();locked=false;const item=attempt[position];const count=el('p',`Pregunta ${position+1} de ${attempt.length}`,'meta');app.append(count);const progress=el('div',undefined,'progress');progress.setAttribute('role','progressbar');progress.setAttribute('aria-label','Preguntas respondidas');progress.setAttribute('aria-valuemin','0');progress.setAttribute('aria-valuemax',String(attempt.length));progress.setAttribute('aria-valuenow',String(position));const fill=el('span');fill.style.width=`${position/attempt.length*100}%`;progress.append(fill);app.append(progress);const heading=el('h2',item.q);app.append(heading);const choices=el('div',undefined,'options');item.options.forEach((option,i)=>{const button=el('button',undefined,'option');button.type='button';button.append(el('span','ABCD'[i],'letter'),el('span',option.text));button.addEventListener('click',()=>{if(locked)return;locked=true;answers.push(option.key);position++;if(position===attempt.length)showResults();else showQuestion();});choices.append(button);});app.append(choices);focusHeading(heading);}
+function showResults(){app.replaceChildren();const correct=grade(attempt,answers);const heading=el('h2','Resultados del test');app.append(heading);const score=el('div',undefined,'score');score.append(el('p',`Aciertos: ${correct} de ${attempt.length}`),el('p',`Nota: ${(correct/attempt.length*10).toLocaleString('es-ES',{minimumFractionDigits:1,maximumFractionDigits:1})} / 10`));app.append(score);const restart=el('button','Reiniciar test','primary');restart.type='button';restart.addEventListener('click',start);app.append(restart,el('h2','Revisión de todas las preguntas'));attempt.forEach((item,i)=>{const ok=answers[i]===item.a;const card=el('section',undefined,`review ${ok?'correct':'incorrect'}`);card.append(el('p',`${i+1}. ${ok?'Acierto':'Error'}`,'status'),el('h3',item.q));const chosen=item.options.findIndex(option=>option.key===answers[i]);const right=item.options.findIndex(option=>option.key===item.a);card.append(el('p',`Tu respuesta: ${'ABCD'[chosen]}. ${item.o[answers[i]]}`),el('p',`Respuesta correcta: ${'ABCD'[right]}. ${item.o[item.a]}`),el('p',`Explicación: ${item.e}`));app.append(card);});focusHeading(heading);window.scrollTo(0,0);}
+start();
+</script></body></html>
