@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test de filosofía · 1.º de Bachillerato</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f3f7f5;color:#18332d;font:1rem/1.5 system-ui,sans-serif}
+main{max-width:48rem;margin:auto;padding:2rem 1rem 4rem}
+header p:first-child{color:#276354;font-weight:650}
+h1{font-size:clamp(2rem,6vw,3.25rem);line-height:1.1;margin:.25rem 0 1rem}
+fieldset{min-width:0;margin:1.5rem 0;padding:1rem;border:1px solid #bfd2c9;border-radius:1rem;background:white}
+legend{font-weight:700;padding:0 .35rem}
+label{display:flex;gap:.6rem;padding:.55rem;border-radius:.5rem;cursor:pointer}
+label:hover,label:focus-within{background:#e9f4ef}
+input{accent-color:#155d49}
+button{font:inherit;font-weight:650;border:1px solid #155d49;border-radius:.6rem;padding:.65rem 1rem;margin:0 .4rem .5rem 0;background:#155d49;color:white;cursor:pointer}
+button[type=reset]{background:white;color:#155d49}
+.feedback{margin:.65rem 0 0;font-weight:550}
+#resultado{font-size:1.2rem;font-weight:700}
+</style>
+</head>
+<body>
+<main>
+<header>
+<p>Filosofía · 1.º de Bachillerato</p>
+<h1>Del mito al logos</h1>
+<p>Responde las cinco preguntas y pulsa «Corregir» para ver tu puntuación y revisar las respuestas.</p>
+</header>
+<form id="test">
+<fieldset>
+<legend>1. ¿Qué busca el paso del mito al logos?</legend>
+<label><input type="radio" name="p0" value="0" required> Explicar lo que ocurre mediante razones</label>
+<label><input type="radio" name="p0" value="1" required> Conservar intactos los relatos tradicionales</label>
+<label><input type="radio" name="p0" value="2" required> Atribuir los cambios de la naturaleza a los dioses</label>
+<p class="feedback" hidden></p>
+</fieldset>
+<fieldset>
+<legend>2. Los primeros filósofos llamaron arjé al principio u origen de todas las cosas.</legend>
+<label><input type="radio" name="p1" value="0" required> Verdadero</label>
+<label><input type="radio" name="p1" value="1" required> Falso</label>
+<p class="feedback" hidden></p>
+</fieldset>
+<fieldset>
+<legend>3. ¿Qué propuso Tales de Mileto como arjé?</legend>
+<label><input type="radio" name="p2" value="0" required> El aire</label>
+<label><input type="radio" name="p2" value="1" required> El fuego</label>
+<label><input type="radio" name="p2" value="2" required> El agua</label>
+<p class="feedback" hidden></p>
+</fieldset>
+<fieldset>
+<legend>4. Según Parménides, el ser puede surgir de la nada.</legend>
+<label><input type="radio" name="p3" value="0" required> Verdadero</label>
+<label><input type="radio" name="p3" value="1" required> Falso</label>
+<p class="feedback" hidden></p>
+</fieldset>
+<fieldset>
+<legend>5. ¿Qué método usa Sócrates para examinar ideas con sus interlocutores?</legend>
+<label><input type="radio" name="p4" value="0" required> El diálogo mediante preguntas</label>
+<label><input type="radio" name="p4" value="1" required> La observación con instrumentos</label>
+<label><input type="radio" name="p4" value="2" required> La exposición de un discurso sin preguntas</label>
+<p class="feedback" hidden></p>
+</fieldset>
+<button type="submit">Corregir</button>
+<button type="reset">Volver a empezar</button>
+<p id="resultado" role="status" tabindex="-1"></p>
+</form>
+</main>
+<script>
+const soluciones = [
+  {
+    "index": 0,
+    "answer": "Explicar lo que ocurre mediante razones",
+    "reason": "El logos propone explicaciones que pueden discutirse y justificarse con razones."
+  },
+  {
+    "index": 0,
+    "answer": "Verdadero",
+    "reason": "Los presocráticos se preguntaron por el principio del que procede la realidad."
+  },
+  {
+    "index": 2,
+    "answer": "El agua",
+    "reason": "Tales consideró el agua como principio de todas las cosas."
+  },
+  {
+    "index": 1,
+    "answer": "Falso",
+    "reason": "Para Parménides, el ser es y el no ser no es. Por eso el ser no puede surgir del no ser."
+  },
+  {
+    "index": 0,
+    "answer": "El diálogo mediante preguntas",
+    "reason": "Sócrates usa preguntas para examinar las respuestas y descubrir contradicciones."
+  }
+];
+const form = document.querySelector('#test');
+const resultado = document.querySelector('#resultado');
+const comentarios = [...form.querySelectorAll('.feedback')];
+
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const respuestas = new FormData(form);
+  let aciertos = 0;
+  soluciones.forEach(({index, answer, reason}, numero) => {
+    const correcta = respuestas.get('p' + numero) === String(index);
+    if (correcta) aciertos++;
+    const comentario = comentarios[numero];
+    comentario.hidden = false;
+    comentario.textContent = (correcta ? 'Correcto. ' : 'Respuesta correcta: ' + answer + '. ') + reason;
+  });
+  resultado.textContent = aciertos + ' de ' + soluciones.length + ' aciertos';
+  resultado.focus();
+});
+
+function limpiarCorreccion() {
+  resultado.textContent = '';
+  comentarios.forEach(comentario => {
+    comentario.hidden = true;
+    comentario.textContent = '';
+  });
+}
+
+form.addEventListener('change', limpiarCorreccion);
+form.addEventListener('reset', limpiarCorreccion);
+</script>
+</body>
+</html>
